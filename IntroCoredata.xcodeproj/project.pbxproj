@@ -7,25 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E87947B245987DB00F0BE46 /* HumanAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E87947A245987DB00F0BE46 /* HumanAdd.swift */; };
 		0EBAE8D3245975530099E471 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAE8D2245975530099E471 /* AppDelegate.swift */; };
 		0EBAE8D5245975530099E471 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAE8D4245975530099E471 /* SceneDelegate.swift */; };
 		0EBAE8D8245975530099E471 /* IntroCoredata.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAE8D6245975530099E471 /* IntroCoredata.xcdatamodeld */; };
-		0EBAE8DA245975530099E471 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAE8D9245975530099E471 /* ContentView.swift */; };
+		0EBAE8DA245975530099E471 /* HumanList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAE8D9245975530099E471 /* HumanList.swift */; };
 		0EBAE8DC245975570099E471 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EBAE8DB245975570099E471 /* Assets.xcassets */; };
 		0EBAE8DF245975570099E471 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EBAE8DE245975570099E471 /* Preview Assets.xcassets */; };
 		0EBAE8E2245975570099E471 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EBAE8E0245975570099E471 /* LaunchScreen.storyboard */; };
+		0EBAE8EC24597F2D0099E471 /* Human+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAE8EA24597F2D0099E471 /* Human+CoreDataClass.swift */; };
+		0EBAE8ED24597F2D0099E471 /* Human+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAE8EB24597F2D0099E471 /* Human+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E87947A245987DB00F0BE46 /* HumanAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanAdd.swift; sourceTree = "<group>"; };
 		0EBAE8CF245975530099E471 /* IntroCoredata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntroCoredata.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EBAE8D2245975530099E471 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EBAE8D4245975530099E471 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0EBAE8D7245975530099E471 /* IntroCoredata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IntroCoredata.xcdatamodel; sourceTree = "<group>"; };
-		0EBAE8D9245975530099E471 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0EBAE8D9245975530099E471 /* HumanList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanList.swift; sourceTree = "<group>"; };
 		0EBAE8DB245975570099E471 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0EBAE8DE245975570099E471 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0EBAE8E1245975570099E471 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0EBAE8E3245975570099E471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EBAE8EA24597F2D0099E471 /* Human+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Human+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0EBAE8EB24597F2D0099E471 /* Human+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Human+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E879479245987CA00F0BE46 /* HumanView */ = {
+			isa = PBXGroup;
+			children = (
+				0EBAE8D9245975530099E471 /* HumanList.swift */,
+				0E87947A245987DB00F0BE46 /* HumanAdd.swift */,
+			);
+			path = HumanView;
+			sourceTree = "<group>";
+		};
 		0EBAE8C6245975530099E471 = {
 			isa = PBXGroup;
 			children = (
@@ -58,9 +73,10 @@
 		0EBAE8D1245975530099E471 /* IntroCoredata */ = {
 			isa = PBXGroup;
 			children = (
+				0E879479245987CA00F0BE46 /* HumanView */,
+				0EBAE8E924597F150099E471 /* Model */,
 				0EBAE8D2245975530099E471 /* AppDelegate.swift */,
 				0EBAE8D4245975530099E471 /* SceneDelegate.swift */,
-				0EBAE8D9245975530099E471 /* ContentView.swift */,
 				0EBAE8DB245975570099E471 /* Assets.xcassets */,
 				0EBAE8E0245975570099E471 /* LaunchScreen.storyboard */,
 				0EBAE8E3245975570099E471 /* Info.plist */,
@@ -76,6 +92,15 @@
 				0EBAE8DE245975570099E471 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0EBAE8E924597F150099E471 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0EBAE8EA24597F2D0099E471 /* Human+CoreDataClass.swift */,
+				0EBAE8EB24597F2D0099E471 /* Human+CoreDataProperties.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,8 +176,11 @@
 			files = (
 				0EBAE8D8245975530099E471 /* IntroCoredata.xcdatamodeld in Sources */,
 				0EBAE8D3245975530099E471 /* AppDelegate.swift in Sources */,
-				0EBAE8DA245975530099E471 /* ContentView.swift in Sources */,
+				0EBAE8DA245975530099E471 /* HumanList.swift in Sources */,
+				0E87947B245987DB00F0BE46 /* HumanAdd.swift in Sources */,
 				0EBAE8D5245975530099E471 /* SceneDelegate.swift in Sources */,
+				0EBAE8EC24597F2D0099E471 /* Human+CoreDataClass.swift in Sources */,
+				0EBAE8ED24597F2D0099E471 /* Human+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
