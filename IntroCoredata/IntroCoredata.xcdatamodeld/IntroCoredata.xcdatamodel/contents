@@ -4,7 +4,12 @@
         <attribute name="firstName" attributeType="String"/>
         <attribute name="lastName" attributeType="String"/>
     </entity>
+    <entity name="Task" representedClassName="Task" syncable="YES">
+        <attribute name="done" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="Human" positionX="-54" positionY="-9" width="128" height="73"/>
+        <element name="Task" positionX="-36" positionY="27" width="128" height="73"/>
     </elements>
 </model>

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0B9013246E936700769C18 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B9011246E936700769C18 /* Task+CoreDataClass.swift */; };
+		0E0B9014246E936700769C18 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B9012246E936700769C18 /* Task+CoreDataProperties.swift */; };
+		0E0B9017246E93F800769C18 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B9016246E93F800769C18 /* TaskList.swift */; };
 		0E87947B245987DB00F0BE46 /* HumanAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E87947A245987DB00F0BE46 /* HumanAdd.swift */; };
 		0EBAE8D3245975530099E471 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAE8D2245975530099E471 /* AppDelegate.swift */; };
 		0EBAE8D5245975530099E471 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAE8D4245975530099E471 /* SceneDelegate.swift */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E0B9011246E936700769C18 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0E0B9012246E936700769C18 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0E0B9016246E93F800769C18 /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		0E87947A245987DB00F0BE46 /* HumanAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanAdd.swift; sourceTree = "<group>"; };
 		0EBAE8CF245975530099E471 /* IntroCoredata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntroCoredata.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EBAE8D2245975530099E471 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E0B9015246E93E400769C18 /* TaskView */ = {
+			isa = PBXGroup;
+			children = (
+				0E0B9016246E93F800769C18 /* TaskList.swift */,
+			);
+			path = TaskView;
+			sourceTree = "<group>";
+		};
 		0E879479245987CA00F0BE46 /* HumanView */ = {
 			isa = PBXGroup;
 			children = (
@@ -52,6 +66,15 @@
 				0E87947A245987DB00F0BE46 /* HumanAdd.swift */,
 			);
 			path = HumanView;
+			sourceTree = "<group>";
+		};
+		0E885FC0246EA0C0004D8442 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0E0B9015246E93E400769C18 /* TaskView */,
+				0E879479245987CA00F0BE46 /* HumanView */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		0EBAE8C6245975530099E471 = {
@@ -73,7 +96,7 @@
 		0EBAE8D1245975530099E471 /* IntroCoredata */ = {
 			isa = PBXGroup;
 			children = (
-				0E879479245987CA00F0BE46 /* HumanView */,
+				0E885FC0246EA0C0004D8442 /* Views */,
 				0EBAE8E924597F150099E471 /* Model */,
 				0EBAE8D2245975530099E471 /* AppDelegate.swift */,
 				0EBAE8D4245975530099E471 /* SceneDelegate.swift */,
@@ -97,6 +120,8 @@
 		0EBAE8E924597F150099E471 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0E0B9011246E936700769C18 /* Task+CoreDataClass.swift */,
+				0E0B9012246E936700769C18 /* Task+CoreDataProperties.swift */,
 				0EBAE8EA24597F2D0099E471 /* Human+CoreDataClass.swift */,
 				0EBAE8EB24597F2D0099E471 /* Human+CoreDataProperties.swift */,
 			);
@@ -176,8 +201,11 @@
 			files = (
 				0EBAE8D8245975530099E471 /* IntroCoredata.xcdatamodeld in Sources */,
 				0EBAE8D3245975530099E471 /* AppDelegate.swift in Sources */,
+				0E0B9013246E936700769C18 /* Task+CoreDataClass.swift in Sources */,
 				0EBAE8DA245975530099E471 /* HumanList.swift in Sources */,
+				0E0B9014246E936700769C18 /* Task+CoreDataProperties.swift in Sources */,
 				0E87947B245987DB00F0BE46 /* HumanAdd.swift in Sources */,
+				0E0B9017246E93F800769C18 /* TaskList.swift in Sources */,
 				0EBAE8D5245975530099E471 /* SceneDelegate.swift in Sources */,
 				0EBAE8EC24597F2D0099E471 /* Human+CoreDataClass.swift in Sources */,
 				0EBAE8ED24597F2D0099E471 /* Human+CoreDataProperties.swift in Sources */,

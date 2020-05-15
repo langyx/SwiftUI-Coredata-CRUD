@@ -15,4 +15,8 @@ extension Human {
     @NSManaged public var firstName: String
     @NSManaged public var lastName: String
 
+    var fullName : String {
+        "\(firstName) \(lastName)"
+    }
+    
 }

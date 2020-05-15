@@ -61,6 +61,7 @@ struct HumanAdd: View {
                                 print(error)
                             }
                             
+                            
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     }, label: {

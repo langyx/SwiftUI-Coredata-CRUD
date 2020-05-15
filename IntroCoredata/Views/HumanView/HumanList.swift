@@ -20,7 +20,7 @@ struct HumanList: View {
             List{
                 ForEach(self.humans, id: \.self) { oneHuman in
                     HStack{
-                        Text("\(oneHuman.firstName) \(oneHuman.lastName)")
+                        Text("\(oneHuman.fullName)")
                         Spacer()
                         Image(systemName: "pencil.circle")
                             .font(.system(size: 20))
