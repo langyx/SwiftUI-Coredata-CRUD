@@ -18,40 +18,44 @@ struct HumanList: View {
     var body: some View {
         NavigationView{
             List{
-                ForEach(self.humans, id: \.self) { oneHuman in
-                    HStack{
-                        Text("\(oneHuman.fullName)")
-                        Spacer()
-                        Image(systemName: "pencil.circle")
-                            .font(.system(size: 20))
-                            .onTapGesture {
-                                self.showEditView.toggle()
-                        }
-                        
-                    }.sheet(isPresented: self.$showEditView, content: {
-                        HumanAdd(edit: oneHuman)
+                ForEach(self.humans, id: \.self) { human in
+                    HumanRow(human: human)
+                    .onTapGesture {
+                        showEditView.toggle()
+                    }
+                    .sheet(isPresented: $showEditView, content: {
+                        HumanAdd(edit: human)
                     })
                 }
-                .onDelete(perform: { offsets in
-                    for offset in offsets {
-                        let humanDeleted = self.humans[offset]
-                        
-                        self.managedObjectContext.delete(humanDeleted)
-                        try? self.managedObjectContext.save()
-                    }
-                })
+                .onDelete(perform: delete)
             }
             .sheet(isPresented: $showAddView, content: {
-                HumanAdd().environment(\.managedObjectContext, self.managedObjectContext)
+                HumanAdd().environment(\.managedObjectContext, managedObjectContext)
             })
-            .navigationBarItems(trailing: Button(action: {
-                self.showAddView.toggle()
-            }, label: {
-                Image(systemName: "plus.circle")
-                    .font(.system(size: 20))
-            }))
-                .navigationBarTitle("Humans")
+            .navigationBarItems(trailing: navBarRightItem)
+            .navigationBarTitle("Humans")
         }
+    }
+}
+
+extension HumanList {
+    private func delete(offsets: IndexSet) {
+        for offset in offsets {
+            let humanDeleted = humans[offset]
+            managedObjectContext.delete(humanDeleted)
+            try? managedObjectContext.save()
+        }
+    }
+}
+
+extension HumanList {
+    private var navBarRightItem: some View {
+        Button(action: {
+            showAddView.toggle()
+        }, label: {
+            Image(systemName: "plus.circle")
+                .font(.system(size: 20))
+        })
     }
 }
 

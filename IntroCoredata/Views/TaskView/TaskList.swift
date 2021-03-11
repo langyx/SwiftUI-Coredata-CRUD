@@ -13,70 +13,84 @@ struct TaskList: View {
     @FetchRequest(entity: Task.entity(), sortDescriptors: []) var tasks: FetchedResults<Task>
     
     @State private var newTaskName: String = ""
-    @State private var viewMode: Int = 0 //0->All, 1->Done
+    @State private var viewMode: ViewMode = .toDo
     
     var body: some View {
         NavigationView{
             VStack{
-                Picker(selection: $viewMode, label: Text("")) {
-                    Text("A faire").tag(0)
-                    Text("Fait").tag(1)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding()
-
+                viewModePicker
                 List{
-                    Section(header: VStack(spacing: 0){
-                        if self.viewMode == 0 {
-                            TextField("Nouvelle tache", text: self.$newTaskName)
-                                .padding(.top)
-                            Button(action: {
-                                let newTask = Task.init(context: self.managedObjectContext)
-                                newTask.name = self.newTaskName
-                                
-                                try? self.managedObjectContext.save()
-                                
-                                self.newTaskName = ""
-                            }, label: {
-                                Text("Ajouter")
-                            })
-                                .padding()
+                    Section(header: taskSectionHeader) {
+                        ForEach(self.data(), id: \.self) { task in
+                            TaskRow(task: task)
                         }
-                    }) {
-                        ForEach(self.data(), id: \.self) { oneTask in
-                            HStack{
-                                Text("\(oneTask.name ?? "Sans nom")")
-                                Spacer()
-                                Button(action: {
-                                    oneTask.done.toggle()
-                                }, label: {
-                                    Image(systemName: oneTask.done ? "checkmark.circle" : "xmark.circle")
-                                    .foregroundColor(oneTask.done ? .green : .red)
-                                        
-                                })
-                            }
-                        }
-                        .onDelete(perform: { offsets in
-                            for offset in offsets {
-                                let taskToDelete = self.tasks[offset]
-                                
-                                self.managedObjectContext.delete(taskToDelete)
-                                try? self.managedObjectContext.save()
-                            }
-                        })
+                        .onDelete(perform: delete)
                     }
                 }
+                .listStyle(GroupedListStyle())
             }
-            
             .navigationBarTitle("Tasks")
         }
     }
     
     private func data() -> [Task] {
-        if self.viewMode == 0{
-            return self.tasks.filter({ !$0.done })
+        switch viewMode {
+        case .toDo:
+            return tasks.filter({ !$0.done })
+        default:
+            return tasks.filter({ $0.done })
         }
-        return self.tasks.filter({ $0.done })
+    }
+}
+
+extension TaskList {
+    private func delete(offsets: IndexSet) {
+        for offset in offsets {
+            let taskToDelete = tasks[offset]
+            managedObjectContext.delete(taskToDelete)
+            try? managedObjectContext.save()
+        }
+    }
+    
+    private func add() {
+        let newTask = Task.init(context: managedObjectContext)
+        newTask.name = newTaskName
+        try? managedObjectContext.save()
+        newTaskName = ""
+    }
+}
+
+extension TaskList {
+    private var viewModePicker: some View {
+        Picker(selection: $viewMode, label: EmptyView()) {
+            ForEach(ViewMode.allCases, id: \.self) { mode in
+                Text(mode.rawValue).tag(mode)
+            }
+        }
+        .pickerStyle(SegmentedPickerStyle())
+        .padding()
+    }
+    
+    private var taskSectionHeader: some View {
+        VStack(spacing: 0){
+            if self.viewMode == .toDo {
+                TextField("Nouvelle tache", text: self.$newTaskName)
+                    .padding(.top)
+                Button(action: {
+                    add()
+                }, label: {
+                    Text("Ajouter")
+                })
+                .padding()
+            }
+        }
+    }
+}
+
+extension TaskList {
+    enum ViewMode: String, CaseIterable {
+        case toDo = "A faire"
+        case done = "Fait"
     }
 }
 
