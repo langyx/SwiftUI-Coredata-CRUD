@@ -36,47 +36,58 @@ struct HumanAdd: View {
                     TextField("LastName", text: $newLastName)
                 }
                 
-                
-                Section(footer: Text(self.stateMsg), content: {
-                    Group{
-                        Button(action: {
-                        self.stateMsg = ""
-                        
-                        if self.newFirstName.isEmpty || self.newLastName.isEmpty {
-                            self.stateMsg = "Veuillez remplir tous les champs"
-                        }else{
-                            if let editedHuman = self.human {
-                                editedHuman.firstName = self.newFirstName
-                                editedHuman.lastName = self.newLastName
-                            }else{
-                                let newHuman = Human.init(context: self.managedObjectContext)
-                                newHuman.firstName = self.newFirstName
-                                newHuman.lastName = self.newLastName
-                            }
-                            
-                            
-                            do {
-                                try self.managedObjectContext.save()
-                            }catch{
-                                print(error)
-                            }
-                            
-                            
-                            self.presentationMode.wrappedValue.dismiss()
-                        }
-                    }, label: {
-                        Text(self.human != nil ? "Modifier" : "Valider")
-                    })
-                        Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }, label: {
-                            Text("Annuler")
-                                .foregroundColor(.red)
-                        })
-                    }
+                Section(footer: Text(stateMsg), content: {
+                    actionSection
                 })
             }
-            .navigationBarTitle(self.human != nil ? "Modifier \(self.human!.firstName)" : "Ajouter un human")
+            .navigationBarTitle(human != nil ? "Modifier \(human!.firstName)" : "Ajouter un human")
+        }
+    }
+}
+
+extension HumanAdd {
+    private func add(human: Human) {
+        human.firstName = newFirstName
+        human.lastName =  newLastName
+        
+        do {
+            try managedObjectContext.save()
+        }catch{
+            print(error)
+        }
+    }
+    
+    private func hide() {
+        presentationMode.wrappedValue.dismiss()
+    }
+}
+
+extension HumanAdd {
+    private var actionSection: some View {
+        Group{
+            Button(action: {
+                stateMsg = ""
+                
+                if newFirstName.isEmpty || newLastName.isEmpty {
+                    self.stateMsg = "Veuillez remplir tous les champs"
+                }else{
+                    var editedHuman: Human
+                    if let human = human {
+                        editedHuman = human
+                    }else{
+                        editedHuman = Human.init(context: managedObjectContext)
+                    }
+                    add(human: editedHuman)
+                    
+                    hide()
+                }
+            }, label: {
+                Text(human != nil ? "Modifier" : "Valider")
+            })
+            Button(action: hide, label: {
+                Text("Annuler")
+                    .foregroundColor(.red)
+            })
         }
     }
 }
